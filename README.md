@@ -65,7 +65,7 @@ You can go to `~/.nstart/config.json` to tweak the config to your
 
 The default config is
 
-```json
+```js
 {
   create: {
     travis: false,
