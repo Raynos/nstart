@@ -92,7 +92,7 @@ I recommend one of two flows:
 
 Create your project, push to github, then write code then publish it
 
-```json
+```js
 {
   create: {
     travis: false,
@@ -113,7 +113,7 @@ Create your project, push to github, then write code then publish it
 
 Create your project, write some code, then push to github & publish it
 
-```json
+```js
 {
   create: {
     travis: false,
