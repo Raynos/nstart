@@ -20,23 +20,23 @@ Project creation and publishing
 ```
 Usage:
 
-  nstart create <name> <description> <[options]> -- <tags ...>
+  nstart create <project> <description> <[options]> -- <tags ...>
 
-    Use nstart to create a project for you. Given a name and a
+    Use nstart to create a project for you. Given a project and a
       description it will use `npm-proj` to create a folder
       directory. You can edit the `~/.npm-proj/` template to
       change the default scaffolding.
-    The name get's used to create a folder name and is used in
-      the project scaffolding, the description is also used in
+    The project get's used to create a folder project and is used
+      in the project scaffolding, the description is also used in
       the scaffolding.
     You can pass a space seperated list of tags after the `--`
     You can also pass in options for travis/testling/git/github/file.
 
     Options:
+      -c [--conflict]         Check npm for project name conflicts
       -a [--travis] <Bool>    Enable creation of travis.ci hook
       -t [--testling] <Bool>  Enable creation of testling hook
-      -g [--git] <Bool>       Initialize a git repo & commit it
-      -h [--github] <Bool>    Send the initial git code to github
+      -g [--github] <Bool>    Initialize a github repo & commit it
       -f [--file] <file path> Location of code to copy to ./index.js
 
   nstart publish <[options]>
@@ -49,8 +49,7 @@ Usage:
       if you have already run them in the `nstart create` step
 
     Options:
-      -g [--git] <Bool>       Initialize a git repo & commit it
-      -h [--github] <Bool>    Send the initial git code to github
+      -g [--github] <Bool>    Initialize a github repo & commit it
       -a [--travis] <Bool>    Enable creation of travis.ci hook
       -t [--testling] <Bool>  Enable creation of testling hook
 ```
@@ -68,16 +67,10 @@ The default config is
 ```js
 {
   create: {
-    travis: false,
-    testling: false,
-    git: false,
     github: false
   },
   publish: {
-    git: false,
-    github: false,
-    travis: false,
-    testling: false
+    github: false
   }
 }
 ```
@@ -95,16 +88,11 @@ Create your project, push to github, then write code then publish it
 ```js
 {
   create: {
-    travis: false,
-    testling: false,
-    git: true,
-    github: true
+    github: true,
+    conflict: true
   },
   publish: {
-    git: false,
-    github: false,
-    travis: false,
-    testling: false
+    github: false
   }
 }
 ```
@@ -116,16 +104,10 @@ Create your project, write some code, then push to github & publish it
 ```js
 {
   create: {
-    travis: false,
-    testling: false,
-    git: false,
     github: false
   },
   publish: {
-    git: true,
-    github: true,
-    travis: false,
-    testling: false
+    github: true
   }
 }
 ```
