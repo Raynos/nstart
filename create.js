@@ -4,6 +4,7 @@ var process = require("process")
 var ncp = require("ncp")
 var NpmProject = require("npm-proj")
 var latest = require("latest")
+var gitify = require("gitify")
 
 var HOME = process.env.HOME || process.env.USERPROFILE
 var startDir = path.join(HOME, ".nstart")
@@ -101,7 +102,14 @@ function create(opts, callback) {
     }
 
     function runGithub(callback) {
-        callback(new Error("--github not implemented"))
+
+      // makes no sense to get github name b/c without password it is useless to gitify
+      // see: https://github.com/thlorenz/gitify/blob/master/lib/credentials.js#L20
+      // possibly though we should have an .nstart config file that has user configure
+      // both beforehand and we could pass those to gitify like this
+      // gitify({ user: username, password: password, repo: (defaults to current dir) }, callback)
+      // https://github.com/thlorenz/gitify#gitify
+      gitify(callback);
     }
 
     function runTravis(callback) {
